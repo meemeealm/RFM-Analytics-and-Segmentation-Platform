@@ -1,6 +1,15 @@
-.venv
+.venv/
+
 *.xlsx
 *.csv
-.ipynb_checkpoints
+
+.ipynb_checkpoints/
+__pycache__/
+
+*.db
+mlruns/
+mlflow.db
+
+*.pkl
 
 
