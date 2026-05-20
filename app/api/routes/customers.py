@@ -50,3 +50,7 @@ async def predict_customers_batch_raw(
     prediction_service: PredictionService = Depends(get_prediction_service),
 ) -> BatchPredictionResponse:
     return prediction_service.predict_batch_raw(payload)
+
+
+
+
