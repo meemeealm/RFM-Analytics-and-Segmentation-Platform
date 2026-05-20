@@ -1,27 +1,27 @@
 [project]
 name = "customer-segmentation"
 version = "0.1.0"
-description = "Add your description here"
+description = "Clean version of libraries for container"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.116.1",
     "google-cloud-storage>=3.4.1",
     "joblib>=1.5.2",
-    "matplotlib>=3.10.9",
-    "mlflow>=3.12.0",
-    "nbconvert>=7.17.1",
     "pandas>=2.3.3",
     "openpyxl>=3.1.5",
-    "pandoc>=2.4",
     "scikit-learn>=1.8.0",
-    "seaborn>=0.13.2",
     "uvicorn>=0.38.0",
     "httpx>=0.28.1",
-    "pytest>=9.0.3",
 ]
 
 [dependency-groups]
 dev = [
     "ipykernel>=7.2.0",
+    "pytest>=9.0.3",
+    "mlflow>=3.12.0",
+    "matplotlib>=3.10.9",
+    "seaborn>=0.13.2",
+    "nbconvert>=7.17.1",
+    "pandoc>=2.4",
 ]
