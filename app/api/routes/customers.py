@@ -1,10 +1,15 @@
 from fastapi import APIRouter, Depends, Request
 
-from app.schemas.customer import BatchPredictRequest, CustomerPredictRequest
+from app.core.security import require_api_key_placeholder
+from app.schemas.customer import BatchPredictRequest, BatchTransactionRequest, CustomerPredictRequest
 from app.schemas.prediction import BatchPredictionResponse, PredictionResponse
 from app.services.prediction_service import PredictionService
 
-router = APIRouter(prefix="/customers", tags=["customers"])
+router = APIRouter(
+    prefix="/customers",
+    tags=["customers"],
+    dependencies=[Depends(require_api_key_placeholder)],
+)
 
 
 def get_prediction_service(request: Request) -> PredictionService:
@@ -33,3 +38,15 @@ async def predict_customers_batch(
     prediction_service: PredictionService = Depends(get_prediction_service),
 ) -> BatchPredictionResponse:
     return prediction_service.predict_batch(payload)
+
+
+@router.post(
+    "/predict/batch/raw",
+    response_model=BatchPredictionResponse,
+    summary="Predict customer segments from raw transaction logs",
+)
+async def predict_customers_batch_raw(
+    payload: BatchTransactionRequest,
+    prediction_service: PredictionService = Depends(get_prediction_service),
+) -> BatchPredictionResponse:
+    return prediction_service.predict_batch_raw(payload)

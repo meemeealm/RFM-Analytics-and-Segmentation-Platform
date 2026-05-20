@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class PredictionResponse(BaseModel):
-    customerid: str
+    customer_id: str
     cluster_id: int
     cluster_name: str
     business_summary: str

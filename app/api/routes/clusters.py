@@ -1,9 +1,14 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
+from app.core.security import require_api_key_placeholder
 from app.schemas.cluster import ClusterMetadata
 from app.services.cluster_service import ClusterService
 
-router = APIRouter(prefix="/clusters", tags=["clusters"])
+router = APIRouter(
+    prefix="/clusters",
+    tags=["clusters"],
+    dependencies=[Depends(require_api_key_placeholder)],
+)
 
 cluster_service = ClusterService()
 
