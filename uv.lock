@@ -485,21 +485,21 @@ dependencies = [
     { name = "google-cloud-storage" },
     { name = "httpx" },
     { name = "joblib" },
-    { name = "matplotlib" },
-    { name = "mlflow" },
-    { name = "nbconvert" },
     { name = "openpyxl" },
     { name = "pandas" },
-    { name = "pandoc" },
-    { name = "pytest" },
     { name = "scikit-learn" },
-    { name = "seaborn" },
     { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
+    { name = "matplotlib" },
+    { name = "mlflow" },
+    { name = "nbconvert" },
+    { name = "pandoc" },
+    { name = "pytest" },
+    { name = "seaborn" },
 ]
 
 [package.metadata]
@@ -508,20 +508,22 @@ requires-dist = [
     { name = "google-cloud-storage", specifier = ">=3.4.1" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "joblib", specifier = ">=1.5.2" },
-    { name = "matplotlib", specifier = ">=3.10.9" },
-    { name = "mlflow", specifier = ">=3.12.0" },
-    { name = "nbconvert", specifier = ">=7.17.1" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.3" },
-    { name = "pandoc", specifier = ">=2.4" },
-    { name = "pytest", specifier = ">=9.0.3" },
     { name = "scikit-learn", specifier = ">=1.8.0" },
-    { name = "seaborn", specifier = ">=0.13.2" },
     { name = "uvicorn", specifier = ">=0.38.0" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ipykernel", specifier = ">=7.2.0" }]
+dev = [
+    { name = "ipykernel", specifier = ">=7.2.0" },
+    { name = "matplotlib", specifier = ">=3.10.9" },
+    { name = "mlflow", specifier = ">=3.12.0" },
+    { name = "nbconvert", specifier = ">=7.17.1" },
+    { name = "pandoc", specifier = ">=2.4" },
+    { name = "pytest", specifier = ">=9.0.3" },
+    { name = "seaborn", specifier = ">=0.13.2" },
+]
 
 [[package]]
 name = "cycler"
