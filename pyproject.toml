@@ -9,10 +9,8 @@ dependencies = [
     "google-cloud-storage>=3.4.1",
     "joblib>=1.5.2",
     "pandas>=2.3.3",
-    "openpyxl>=3.1.5",
     "scikit-learn>=1.8.0",
     "uvicorn>=0.38.0",
-    "httpx>=0.28.1",
 ]
 
 [dependency-groups]
@@ -24,4 +22,5 @@ dev = [
     "seaborn>=0.13.2",
     "nbconvert>=7.17.1",
     "pandoc>=2.4",
+    "httpx>=0.28.1",
 ]
