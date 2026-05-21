@@ -19,7 +19,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PORT=8080 \
     TMPDIR=/tmp \
-    PATH="/app/.venv/bin:$PATH"
+    MODEL_SEARCH_PATHS="/tmp/models/rfm_pipeline_*.pkl, /tmp/models/rfm_pipeline.pkl"
 
 RUN addgroup --system app && adduser --system --ingroup app app
 
@@ -27,6 +27,7 @@ WORKDIR /app
 
 COPY --from=builder /app/.venv /app/.venv
 COPY --chown=app:app app ./app
+
 
 USER app
 
