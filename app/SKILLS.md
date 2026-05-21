@@ -29,7 +29,7 @@ Predicts the customer cluster using pre-trained KMeans model based on RFM featur
 
 ```json
 {
-  "customerid": "string (optional)",
+  "customer_id": "string (optional)",
   "recency": "float",
   "frequency": "float",
   "monetary": "float"
