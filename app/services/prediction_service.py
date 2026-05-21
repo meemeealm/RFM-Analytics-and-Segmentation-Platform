@@ -41,7 +41,7 @@ class PredictionService:
             raise ValueError(f"Prediction returned unmapped cluster_id={cluster_id}.")
 
         return PredictionResponse(
-            customer_id=payload.customer_id,
+            customer_id=str(payload.customer_id),
             cluster_id=cluster_id,
             cluster_name=str(cluster_details["cluster_name"]),
             business_summary=str(cluster_details["business_summary"]),

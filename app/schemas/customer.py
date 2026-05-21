@@ -1,6 +1,6 @@
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
 
 
 class CustomerPredictRequest(BaseModel):
@@ -39,7 +39,11 @@ class RawTransaction(BaseModel):
     quantity: int
     invoice_date: str = Field(..., alias="invoicedate")
     unit_price: float = Field(..., alias="unitprice")
-    customer_id: str = Field(..., alias="customerid")
+    customer_id: str = Field(
+        ...,
+        alias="customer_id",
+        validation_alias=AliasChoices("customer_id", "customerid"),
+    )
     country: str | None = None
     status: str
 

@@ -24,7 +24,7 @@ def test_predict_batch_raw_endpoint() -> None:
     payload = {
         "transactions": [
             {
-                "customerid": "12345",
+                "customer_id": "12345",
                 "invoiceno": "INV-001",
                 "stockcode": "SKU-001",
                 "description": "Sample item",
