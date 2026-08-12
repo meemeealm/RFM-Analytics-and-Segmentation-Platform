@@ -19,7 +19,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PORT=8080 \
     TMPDIR=/tmp \
-    MODEL_SEARCH_PATHS="/tmp/models/rfm_pipeline_*.pkl, /tmp/models/rfm_pipeline.pkl"
+    MODEL_SEARCH_PATHS="/tmp/models/rfm_pipeline_*.pkl, /tmp/models/rfm_pipeline.pkl" \
+    PATH="/app/.venv/bin:$PATH"
 
 RUN addgroup --system app && adduser --system --ingroup app app
 

@@ -13,12 +13,14 @@ from sklearn.cluster import KMeans
 #===============
 
 df = pd.read_excel("Online Retail.xlsx")
-df.rename(columns=str.lower, inplace=True)
+df.rename(
+    columns=lambda column: "customer_id" if column.lower() == "customerid" else column.lower(),
+    inplace=True,
+)
 df['date']= pd.to_datetime(df['invoicedate'])
-df = df.dropna(subset=['customerid'])
+df = df.dropna(subset=['customer_id'])
 
-
-df_rec = df.groupby('customerid')['date'].max().reset_index()
+df_rec = df.groupby('customer_id')['date'].max().reset_index()
 
 df['total_spend'] = df['quantity']*df['unitprice']
 
@@ -35,7 +37,7 @@ df_rec['recency'] = (latest_date - df_rec['date']).dt.days
 
 # 1. THE AGGREGATION (Ensuring unique trips)
 
-rfm = df.groupby('customerid').agg({
+rfm = df.groupby('customer_id').agg({
     'invoicedate': lambda x: (latest_date - x.max()).days, # Recency
     'invoiceno': 'nunique',                               # Frequency (Unique trips!)
     'total_spend': 'sum'                                  # Monetary
