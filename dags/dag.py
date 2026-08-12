@@ -28,7 +28,7 @@ with DAG(
     schedule_interval='@daily',
     start_date=datetime(2026, 1, 1),
     catchup=False,
-    tags=['mlops', 'etl', 'portfolio'],
+    tags=['segmentation'],
 ) as dag:
 
     # ------------------------------------------------------------------
@@ -44,13 +44,13 @@ with DAG(
     # ------------------------------------------------------------------
     # SQL query text directly embedded or read from a file
     transformation_sql = """
-    CREATE OR REPLACE TABLE `your_project.your_dataset.analytics_customer_data` AS
+    CREATE OR REPLACE TABLE `retail.customer_mart.customer_data` AS
     SELECT 
         user_id,
         COALESCE(age, 35) AS age,
         annual_income,
         spending_score
-    FROM `your_project.your_dataset.raw_customer_data`;
+    FROM `customer_mart.customer_data`;
     """
 
     task_transform_bq = BigQueryInsertJobOperator(
@@ -70,7 +70,7 @@ with DAG(
     task_trigger_inference = HttpOperator(
         task_id='trigger_fastapi_segmentation',
         http_conn_id='fastapi_server_default', # Named connection in Airflow UI
-        endpoint='run-segmentation',          # Maps to your @app.post("/run-segmentation")
+        endpoint='run-segmentation',          # Maps to @app.post("/run-segmentation")
         method='POST',
         headers={"Content-Type": "application/json"},
         response_check=lambda response: response.status_code == 200, # Verify API returned 200 OK
