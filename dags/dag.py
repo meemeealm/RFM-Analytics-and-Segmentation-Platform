@@ -6,6 +6,8 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.providers.http.operators.http import HttpOperator
 
+# this script only automates pipeline from MySQL -> BigQuery -> FastAPI Endpoint -> GCS
+
 # Dynamic path setup for local scripts
 PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PARENT_DIR)
@@ -14,7 +16,7 @@ from scripts.load_mysql_to_bq import run_mysql_to_bq
 
 # Default settings applied to ALL tasks
 default_args = {
-    'owner': 'data_engineering_portfolio',
+    'owner': 'data_engineer',
     'depends_on_past': False,
     'email_on_failure': False,
     'retries': 1,
@@ -24,7 +26,7 @@ default_args = {
 with DAG(
     dag_id='customer_segmentation_end_to_end',
     default_args=default_args,
-    description='Full MLOps Pipeline: MySQL -> BigQuery -> FastAPI -> GCS',
+    description='Pipeline: MySQL -> BigQuery -> FastAPI -> GCS',
     schedule_interval='@daily',
     start_date=datetime(2026, 1, 1),
     catchup=False,

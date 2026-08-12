@@ -30,7 +30,7 @@ def run_mysql_to_bq():
 
     # 3. Stream data straight to BigQuery
     bq_client = bigquery.Client()
-    table_id = "your_gcp_project.your_dataset.customer_segments"
+    table_id = "customer_mart.customer_data"
     
     # WRITE_TRUNCATE overwrites the BQ table daily with the fresh snapshot from MySQL
     job_config = bigquery.LoadJobConfig(write_disposition="WRITE_TRUNCATE")
