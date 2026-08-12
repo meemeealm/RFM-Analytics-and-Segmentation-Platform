@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.providers.http.operators.http import HttpOperator
 
-# this script only automates pipeline from MySQL -> BigQuery -> FastAPI Endpoint -> GCS
+# this script automates pipeline from MySQL -> BigQuery -> FastAPI Endpoint -> GCS
 
 # Dynamic path setup for local scripts
 PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,7 +66,7 @@ with DAG(
     )
 
     # ------------------------------------------------------------------
-    # TASK 3: INFERENCE (MLOps / FastAPI)
+    # TASK 3: INFERENCE (FastAPI)
     # ------------------------------------------------------------------
 
     task_trigger_inference = HttpOperator(

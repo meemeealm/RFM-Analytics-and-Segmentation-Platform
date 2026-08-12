@@ -15,12 +15,12 @@ def run_mysql_to_bq():
     port = os.getenv("DB_PORT")
     db_name = os.getenv("DB_NAME")
     
-    # Connection string format for SQLAlchemy + PyMySQL
+    # Connection string format for SQLAlchemy + PyMySQL 
     connection_string = f"mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}"
     engine = create_engine(connection_string)
     
     # 2. Extract data using Pandas
-    query = "SELECT user_id, age, annual_income, spending_score FROM users;"
+    query = "SELECT customer_id, invoicedate, quantity, unitprice FROM users;"
     print("Connecting to MySQL Workbench and extracting data...")
     df = pd.read_sql(query, con=engine)
     
